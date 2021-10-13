@@ -1,0 +1,27 @@
+version: "3.9" # optional since v1.27.0
+services:
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    environment:
+      - REACT_APP_API_BASE_URL=http://localhost:11000
+      - PORT=80
+    volumes:
+      - logvolume01:/var/log
+  api:
+    build: ./backend
+    ports:
+      - "11000:11000"
+    environment:
+      - APP_ENV=dev
+      - APP_SECRET=7841b2be6623f7432f568c4499db3be3
+      - DATABASE_URL=sqlite:///%kernel.project_dir%/var/data.db
+      - PORT=11000
+    volumes:
+      - logvolume02:/var/log
+volumes:
+  logvolume01: {}
+  logvolume02: {}
