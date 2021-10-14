@@ -9,7 +9,15 @@ This is a wrapper app that uses `docker-compose` to run both both backend and fr
 
 ## How to?
 
-Run the following command to start the application:
+In your project directory:
+
+1. Update the git submodules (backend, frontend) using the following command:
+
+```bash
+git submodule update --init --recursive
+```
+
+2. Run the following command to start the application:
 
 ```bash
 docker-compose up -d
